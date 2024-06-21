@@ -6,17 +6,28 @@
     "apps/*",
     "packages/*"
   ],
+  "prisma": {
+    "schema": "packages/database/prisma/schema.prisma",
+    "seed": "tsx packages/database/src/seed.ts"
+  },
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "dev": "concurrently \"turbo run dev --filter=api\" \"turbo run dev --filter=web\"",
+    "dev": "turbo run dev",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.0.0"
   },
   "devDependencies": {
     "turbo": "^2.0.3",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "prisma": "^4.0.0"
   },
   "packageManager": "pnpm@9.1.2",
   "engines": {

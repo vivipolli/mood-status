@@ -8,6 +8,9 @@
       "dependsOn": ["^build"],
       "env": ["NEXT_PUBLIC_API_HOST"]
     },
+    "db:migrate:deploy": {},
+    "db:push": {},
+    "db:seed": {},
     "test": {
       "outputs": [],
       "dependsOn": []
@@ -19,6 +22,9 @@
       "cache": false,
       "persistent": true,
       "dependsOn": ["^dev"]
+    },
+    "generate": {
+      "dependsOn": ["^generate"]
     },
     "clean": {
       "cache": false

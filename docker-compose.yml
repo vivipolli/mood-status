@@ -1,19 +1,19 @@
-version: "3"
+version: "3.9"
 
 services:
   postgres:
     image: postgres:16.2
     restart: always
     environment:
-      POSTGRES_DB: "code-test"
-      POSTGRES_USER: "pg-user"
-      POSTGRES_PASSWORD: "pg-password"
+      POSTGRES_DB: "mood"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "mypassword"
     networks:
       - app_network
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
-      - postgres:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   frontend:
     build:
@@ -33,12 +33,13 @@ services:
     networks:
       - app_network
     ports:
-      - '3001:3001'
+      - '3333:3333'
     depends_on:
       - postgres
     
 networks:
   app_network:
-    external: true
+    external: false
 
 volumes:
+  postgres_data:
