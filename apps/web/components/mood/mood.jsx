@@ -28,7 +28,7 @@ const moodsAvailable = {
 
 export default function Mood() {
   const router = useRouter();
-  const userMood = router.query.mood;
+  const userMood = router.query.mood.toLowerCase();
   const isValidMood = Object.keys(moodsAvailable).includes(userMood);
 
   if (!isValidMood) return <Fallback />;

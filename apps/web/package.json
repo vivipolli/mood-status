@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.5.3",
+    "axios": "^1.7.2",
     "clsx": "^2.0.0",
     "lucide-react": "^0.291.0",
     "next": "14.0.1",

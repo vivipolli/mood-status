@@ -12,7 +12,7 @@ export class MoodService {
 
   async createMood(type: MoodType): Promise<Mood> {
     return this.prisma.mood.create({
-      data: { type },
+      data: { type: type },
     });
   }
 }

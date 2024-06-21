@@ -14,11 +14,11 @@ export default function Sidebar({ moodList = [], setShowModal, children }) {
     <div className={styles.sidebar} suppressHydrationWarning>
       <div className={styles["sidebar__list"]}>
         <div className={styles.scrollable}>
-          {moodList.map(({ mood, date }, index) => (
+          {moodList.map(({ type, createdAt }, index) => (
             <MoodPreview
-              key={`mood-preview-${date}-${mood}-${index}`}
-              mood={mood}
-              date={date}
+              key={`mood-preview-${createdAt}-${type.toLowerCase()}-${index}`}
+              mood={type.toLowerCase()}
+              date={createdAt}
               updateSelectedMood={updateSelectedMood}
             />
           ))}
