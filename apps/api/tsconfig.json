@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@nestjs/*": ["node_modules/@nestjs/*"],
-      "@prisma/client": ["node_modules/@prisma/client"]
+      "@prisma/client": ["../../packages/database/node_modules/@prisma/client"]
     }
   },
   "include": ["src/**/*.ts"],

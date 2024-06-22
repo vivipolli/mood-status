@@ -71,9 +71,15 @@ turbo run build
 - **Backend (NestJS)**: http://localhost:3333
 
 ### Environment Variables
-Ensure you have the following environment variables set. You can create a .env file in the packages/database directory for this purpose.
+Ensure you have the following environment variables set.  
+You can create a .env file in the packages/database directory for this purpose.
 ```sh
 DATABASE_URL=postgresql://admin:mypassword@postgres:5432/mood
+```
+
+Also in the apps/web
+```sh
+NEXT_PUBLIC_API_HOST=http://localhost:3333
 ```
 
 

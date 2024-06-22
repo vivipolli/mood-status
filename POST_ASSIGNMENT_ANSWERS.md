@@ -1,5 +1,6 @@
 - **Describe the major design/build decisions and why you made them**  
 I chose to use Nest and Prisma to compose the backend architecture because besides being technologies that are starting to be more used with Node, I don't need to worry too much about creating endpoints and integrating with the database. Nest is a good framework that avoids messy folder structuring.
+I chose to initialize the app when there is no record with a default mood and force the user to register their first mood instead of initializing with a blank or default page.
 - **How long did the assignment take (in hours)? Please break down your answer into buckets (e.g. "Learning Framework", "Coding", "Debugging").**
   - Understanding the requirements and defining the arquitecture: 1h30
   - Implementing the backend: 2h

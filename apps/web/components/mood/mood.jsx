@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
-import Fallback from "./fallback";
 
 import styles from "./mood.module.css";
 import clsx from "clsx";
@@ -28,11 +27,7 @@ const moodsAvailable = {
 
 export default function Mood() {
   const router = useRouter();
-  const userMood = router.query.mood?.toLowerCase();
-  const isValidMood = Object.keys(moodsAvailable).includes(userMood);
-
-  if (!isValidMood) return <Fallback />;
-
+  const userMood = router.query.mood || 'pleasant'; // default mood when not records
   const currentMood = moodsAvailable[userMood];
 
   return (

@@ -35,7 +35,7 @@ export default function Modal({ showModal = false, updateMood, closeModal }) {
         <div className={styles.options}>
           <button
             className={styles.mood}
-            onClick={() => updateMood("Pleasant")}
+            onClick={() => updateMood("pleasant")}
             type="button"
           >
             <Image
@@ -48,7 +48,7 @@ export default function Modal({ showModal = false, updateMood, closeModal }) {
           </button>
           <button
             className={styles.mood}
-            onClick={() => updateMood("Excited")}
+            onClick={() => updateMood("excited")}
             type="button"
           >
             <Image
@@ -61,7 +61,7 @@ export default function Modal({ showModal = false, updateMood, closeModal }) {
           </button>
           <button
             className={styles.mood}
-            onClick={() => updateMood("Sad")}
+            onClick={() => updateMood("sad")}
             type="button"
           >
             <Image

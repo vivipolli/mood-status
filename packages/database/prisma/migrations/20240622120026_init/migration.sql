@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "MoodType" AS ENUM ('Pleasant', 'Excited', 'Sad');
+CREATE TYPE "MoodType" AS ENUM ('PLEASANT', 'EXCITED', 'SAD');
 
 -- CreateTable
 CREATE TABLE "Mood" (

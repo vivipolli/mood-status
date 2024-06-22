@@ -1,18 +1,11 @@
 import { useRouter } from "next/router";
 import styles from "./sidebar.module.css";
 import MoodPreview from "./mood-preview";
-import { useEffect } from "react";
+import { Spin } from 'antd';
+
 
 export default function Sidebar({ moodList = [], setShowModal, children }) {
 	const router = useRouter();
-
-	useEffect(() => {
-    const firstMood = moodList[0]
-		if (firstMood) {
-			router.query.mood = firstMood.type;
-			router.push(router);
-		}
-	}, []);
 
 	const updateSelectedMood = (newMood) => {
 		router.query.mood = newMood;
@@ -22,19 +15,25 @@ export default function Sidebar({ moodList = [], setShowModal, children }) {
 	return (
 		<div className={styles.sidebar} suppressHydrationWarning>
 			<div className={styles["sidebar__list"]}>
-				<div className={styles.scrollable}>
-					{moodList.map(({ type, createdAt }, index) => (
-						<MoodPreview
-							key={`mood-preview-${createdAt}-${type.toLowerCase()}-${index}`}
-							mood={type.toLowerCase()}
-							date={createdAt}
-							updateSelectedMood={updateSelectedMood}
-						/>
-					))}
-					{children}
-				</div>
+				{moodList.length !== 0 ? (
+					<div className={styles.scrollable}>
+						{moodList.map(({ type, createdAt }, index) => (
+							<MoodPreview
+								key={`mood-preview-${createdAt}-${type}-${index}`}
+								mood={type}
+								date={createdAt}
+								updateSelectedMood={updateSelectedMood}
+							/>
+						))}
+						{children}
+					</div>
+				) : (
+					<div className={styles.spinner}>
+						<Spin  />
+					</div>
+				)}
 			</div>
-			<div className={styles["sidebar__footer"]}>
+			<div className={styles.sidebar}>
 				<button
 					className={styles["sidebar__add_button"]}
 					onClick={() => setShowModal((current) => !current)}>

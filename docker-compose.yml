@@ -11,7 +11,7 @@ services:
     networks:
       - app_network
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -36,6 +36,12 @@ services:
       - '3333:3333'
     depends_on:
       - postgres
+    environment:
+      DATABASE_URL: "postgresql://admin:mypassword@postgres:5432/mood"  
+    command: >
+      sh -c "until nc -z postgres 5432; do echo 'Waiting for the database...'; sleep 1; done;
+             npx prisma generate --schema=packages/database/prisma/schema.prisma &&
+             pnpm dev"
     
 networks:
   app_network:
