@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Mood, MoodType } from '@prisma/client';
+import { Mood, MoodType } from '@repo/db';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()

@@ -5,10 +5,7 @@ import {
   Body,
   BadRequestException,
 } from '@nestjs/common';
-import {
-  Mood,
-  MoodType,
-} from '../../../../packages/database/node_modules/@prisma/client';
+import { Mood, MoodType } from '@repo/db';
 import { MoodService } from './mood.service';
 import { CreateMoodDto, CreateMoodDtoType } from './mood.dto';
 

@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { MoodType } from '@prisma/client';
+import { MoodType } from '@repo/db';
 
 export const CreateMoodDto = z.object({
   type: z
