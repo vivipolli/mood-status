@@ -23,6 +23,8 @@ body {
 
   font-family: sans-serif;
   background-color: #f2f5fd;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -55,4 +57,22 @@ body {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+::-webkit-scrollbar {
+  width: 7px; 
+  height: 7px; 
+}
+
+::-webkit-scrollbar-track {
+  background: var(--Lavender-100); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--Lavender-300); 
+  border-radius: 6px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--Lavender-300); 
 }

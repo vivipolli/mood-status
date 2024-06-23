@@ -19,7 +19,6 @@ export default function BackgroundExcited({ isActive = false }) {
 							[styles.hide]: !isActive,
 							[styles.show]: isActive,
 						})}
-            style={{ transitionDelay: "0.25s" }}
 						width={460}
 						height={430}
 						fill="white"
@@ -29,7 +28,6 @@ export default function BackgroundExcited({ isActive = false }) {
 							[styles["hide--background"]]: !isActive,
 							[styles["show--background"]]: isActive,
 						})}
-            style={{ transitionDelay: "0.25s" }}
 						width={912}
 						height={850}
 						fill="url(#paint0_linear_1_11)"
@@ -51,21 +49,6 @@ export default function BackgroundExcited({ isActive = false }) {
 								[styles.show]: isActive,
 							},
 							styles.fbtt,
-							styles.delay1
-						)}
-						fillRule="evenodd"
-						clipRule="evenodd"
-						d="M22.514 232.706H59.5428C70.95 232.706 80.1974 223.395 80.1974 211.91C80.1974 200.425 70.95 191.114 59.5428 191.114C56.1004 191.114 52.8548 191.962 50.0006 193.462C46.0263 181.855 35.0831 173.518 22.2056 173.518C5.97226 173.518 -7.18747 186.767 -7.18747 203.112C-7.18747 203.447 -7.18194 203.78 -7.17098 204.113C-11.9097 206.676 -15.1316 211.714 -15.1316 217.509C-15.1316 225.902 -8.37385 232.706 -0.0378044 232.706H22.2056C22.252 232.706 22.514 232.706 22.514 232.706H22.2056H22.514Z"
-						fill="url(#paint1_linear_1_11)"
-					/>
-					<path
-						className={clsx(
-							{
-								[styles.hide]: !isActive,
-								[styles.show]: isActive,
-							},
-							styles.fbtt,
-							styles.delay1
 						)}
 						fillRule="evenodd"
 						clipRule="evenodd"
@@ -77,7 +60,7 @@ export default function BackgroundExcited({ isActive = false }) {
 							[styles.hide]: !isActive,
 							[styles.show]: isActive,
 						})}
-						style={{ transitionDelay: "1.25s" }}
+						style={{ transitionDelay: "0.75s" }}
 						fillRule="evenodd"
 						clipRule="evenodd"
 						d="M535.089 443.849C535.089 443.849 532.114 349.862 464.682 335.166C405.724 326.426 360.269 394.26 307.549 394.26C246.107 394.26 217.151 354.892 157.496 354.892C113.987 354.892 71.5015 389.119 12.2526 377.255C-119.349 350.903 -51.6568 346.382 -51.6568 346.382V495.774L535.089 504.753V443.849Z"
@@ -92,7 +75,6 @@ export default function BackgroundExcited({ isActive = false }) {
 							},
 							styles.fttb
 						)}
-						style={{ transitionDelay: "1.25s" }}
 						cx="390.647"
 						cy="52.1059"
 						rx="31.0197"
@@ -104,7 +86,7 @@ export default function BackgroundExcited({ isActive = false }) {
 							[styles.hide]: !isActive,
 							[styles.show]: isActive,
 						})}
-						style={{ transitionDelay: "1.25s" }}
+						style={{ transitionDelay: "1s" }}
 						fillRule="evenodd"
 						clipRule="evenodd"
 						d="M427.726 109.271H381.097C366.733 109.271 355.088 97.5726 355.088 83.1424C355.088 68.7123 366.733 57.0143 381.097 57.0143C385.432 57.0143 389.519 58.0796 393.113 59.9637C398.118 45.3815 411.898 34.9059 428.114 34.9059C448.556 34.9059 465.128 51.553 465.128 72.0882C465.128 72.5091 465.121 72.9283 465.107 73.3458C471.074 76.5663 475.132 82.8957 475.132 90.177C475.132 100.722 466.622 109.271 456.125 109.271H428.114C428.056 109.271 427.726 109.271 427.726 109.271H428.114H427.726Z"
@@ -114,8 +96,7 @@ export default function BackgroundExcited({ isActive = false }) {
 						className={clsx({
 							[styles.hide]: !isActive,
 							[styles.show]: isActive,
-						})}
-						style={{ transitionDelay: "1.25s" }}
+						})}						
 						fillRule="evenodd"
 						clipRule="evenodd"
 						d="M427.726 109.271H381.097C366.733 109.271 355.088 97.5726 355.088 83.1424C355.088 68.7123 366.733 57.0143 381.097 57.0143C385.432 57.0143 389.519 58.0796 393.113 59.9637C398.118 45.3815 411.898 34.9059 428.114 34.9059C448.556 34.9059 465.128 51.553 465.128 72.0882C465.128 72.5091 465.121 72.9283 465.107 73.3458C471.074 76.5663 475.132 82.8957 475.132 90.177C475.132 100.722 466.622 109.271 456.125 109.271H428.114C428.056 109.271 427.726 109.271 427.726 109.271H428.114H427.726Z"

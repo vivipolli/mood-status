@@ -7,7 +7,7 @@ I chose to initialize the app when there is no record with a default mood and fo
   - Debugging and fixing docker issues: 4h
   - Updating the frontend: 1h30
 - **If you could go back and give yourself advice at the beginning of the project, what would it be?**   
-Create the MoodType enum in lowercase.
+Implement the lint in the web part. 
 - **Do you feel that this assignment allowed you to showcase your abilities effectively?**  
 Not much, as I ended up wasting a lot of time adapting and understanding how tools like pnpn, docker and turbo work, less so with React and typescript/javascript.
 - **Are there any significant web development-related skills that you possess that were not demonstrated in this exercise? If so, what are they?**

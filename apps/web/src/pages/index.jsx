@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 
 import { Inter } from "next/font/google";
@@ -15,7 +15,14 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [closeDisable, setCloseDisable] =useState(false);
   const router = useRouter();
-  const scollToRef = useRef(null);
+  const scrollToRef = useRef(null);
+
+  function pushToRoute(newMood) {
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, mood: newMood },
+    }, undefined, { shallow: true });
+  }
 
   useEffect(() => {
     const fetchMoods = async () => {
@@ -26,9 +33,7 @@ export default function Home() {
           setCloseDisable(true);
         } else {
           setMoodList(data);
-          router.query.mood = data[data.length - 1]?.type;
-          router.push(router);
-          
+          pushToRoute(data[data.length - 1]?.type)         
         }
       } catch (error) {
         console.error('Failed to fetch moods:', error);
@@ -39,25 +44,36 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (scollToRef.current) {
-      scollToRef.current.scrollIntoView();
+    if (scrollToRef.current) {
+      scrollToRef.current.scrollIntoView();
     }
-  })
+  },[moodList])
 
-  const updateMood = async (newMood) => {
+  const updateMood = useCallback(async (newMood) => {
     const parsedMood = newMood.toUpperCase();
     try {
       const createdMood = await moodService.createMood({ type: parsedMood });
-      setMoodList((currentMood) => [...currentMood, createdMood]);
-      router.query.mood = newMood;
-      router.push(router);
+      setMoodList((currentMood) => {
+        const updatedMoodList = [...currentMood, createdMood];
+        // Check if the new mood list is actually different to prevent unnecessary updates
+        if (JSON.stringify(currentMood) !== JSON.stringify(updatedMoodList)) {
+          return updatedMoodList;
+        }
+        return currentMood;
+      });
+      // Update router only if the new mood is different
+      if (router.query.mood !== newMood) pushToRoute(newMood)
+
       setShowModal(false);
       setCloseDisable(false);
-      scollToRef.current.scrollIntoView();
+
+      if (scrollToRef.current) {
+        scrollToRef.current.scrollIntoView();
+      }
     } catch (error) {
       console.error('Failed to create mood:', error);
     }
-  };
+  }, [router]);
 
   return (
     <main className={clsx(inter.className, "main")}>
@@ -68,7 +84,7 @@ export default function Home() {
       />
       <Mood />
       <Sidebar moodList={moodList} setShowModal={setShowModal}>
-        <div ref={scollToRef} />
+        <div ref={scrollToRef} />
       </Sidebar>
     </main>
   );

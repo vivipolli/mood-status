@@ -24,6 +24,7 @@
 .show {
   transition: ease-in-out all 0.25s 0.5s;
   opacity: 1;
+  transition-delay: 0.75;
   transform: translateY(0) !important;
 }
 
@@ -48,6 +49,7 @@
   transform: translateY(10vh);
   transition: opacity 1.5s;
   animation-delay: 1s;
+  transition-delay: 0.75s;
 }
 
 .fttb {

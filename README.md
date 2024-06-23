@@ -48,7 +48,7 @@ npx prisma generate
 #### Using Docker Compose
 1. Build and run the Docker containers:
 ```sh
-docker-compose up --build
+docker compose up --build
 ```
 This command will build and start the following services:
 

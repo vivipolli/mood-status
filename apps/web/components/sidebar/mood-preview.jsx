@@ -1,5 +1,7 @@
 import { useRef } from "react";
+
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { motion } from "framer-motion";
 
 import styles from "./sidebar.module.css";
 
@@ -22,7 +24,14 @@ export default function MoodPreview({ mood, date, updateSelectedMood }) {
 		.toLowerCase();
 
 	return (
-		<button
+		<motion.button
+			initial={{ opacity: 0.6 }}
+			whileHover={{
+				scale: 1.1,
+				transition: { duration: 1 },
+			}}
+			whileTap={{ scale: 0.9 }}
+			whileInView={{ opacity: 1 }}
 			className={styles.mood_preview}
 			type="button"
 			onClick={() => updateSelectedMood(mood)}
@@ -41,6 +50,6 @@ export default function MoodPreview({ mood, date, updateSelectedMood }) {
 					{localizedDate} at {localizedTime}
 				</span>
 			</span>
-		</button>
+		</motion.button>
 	);
 }

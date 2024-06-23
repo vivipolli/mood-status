@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 import styles from "./mood.module.css";
 import clsx from "clsx";

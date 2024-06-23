@@ -1,15 +1,27 @@
 import { useRouter } from "next/router";
+
+import { motion } from "framer-motion";
+import PropTypes from 'prop-types';
+import { Spin } from "antd";
+
 import styles from "./sidebar.module.css";
 import MoodPreview from "./mood-preview";
-import { Spin } from 'antd';
+import useScrollableHeight from "@/hooks/useScrollableHeight";
 
 
 export default function Sidebar({ moodList = [], setShowModal, children }) {
 	const router = useRouter();
+	const { scrollRef, springNegativeScrollY } = useScrollableHeight();
 
 	const updateSelectedMood = (newMood) => {
-		router.query.mood = newMood;
-		router.push(router);
+		router.push(
+			{
+				pathname: router.pathname,
+				query: { ...router.query, mood: newMood },
+			},
+			undefined,
+			{ shallow: true }
+		);
 	};
 
 	return (
@@ -17,19 +29,21 @@ export default function Sidebar({ moodList = [], setShowModal, children }) {
 			<div className={styles["sidebar__list"]}>
 				{moodList.length !== 0 ? (
 					<div className={styles.scrollable}>
-						{moodList.map(({ type, createdAt }, index) => (
-							<MoodPreview
-								key={`mood-preview-${createdAt}-${type}-${index}`}
-								mood={type}
-								date={createdAt}
-								updateSelectedMood={updateSelectedMood}
-							/>
-						))}
-						{children}
+						<motion.div style={{ y: springNegativeScrollY }} animate={{ y: 50 }} ref={scrollRef}>
+							{moodList.map(({ type, createdAt }, index) => (
+								<MoodPreview
+									key={`mood-preview-${createdAt}-${type}-${index}`}
+									mood={type}
+									date={createdAt}
+									updateSelectedMood={updateSelectedMood}
+								/>
+							))}
+							{children}
+						</motion.div>
 					</div>
 				) : (
 					<div className={styles.spinner}>
-						<Spin  />
+						<Spin />
 					</div>
 				)}
 			</div>
@@ -43,3 +57,14 @@ export default function Sidebar({ moodList = [], setShowModal, children }) {
 		</div>
 	);
 }
+
+Sidebar.propTypes = {
+  moodList: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+    })
+  ),
+  setShowModal: PropTypes.func.isRequired,
+  children: PropTypes.node,
+};

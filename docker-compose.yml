@@ -3,10 +3,9 @@ version: "3.9"
 services:
   postgres:
     image: postgres:16.2
-    restart: always
     environment:
       POSTGRES_DB: "mood"
-      POSTGRES_USER: "admin"
+      POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "mypassword"
     networks:
       - app_network
@@ -36,12 +35,12 @@ services:
       - '3333:3333'
     depends_on:
       - postgres
-    environment:
-      DATABASE_URL: "postgresql://admin:mypassword@postgres:5432/mood"  
+    env_file:
+      - .env
     command: >
       sh -c "until nc -z postgres 5432; do echo 'Waiting for the database...'; sleep 1; done;
-             npx prisma generate --schema=packages/database/prisma/schema.prisma &&
-             pnpm dev"
+             pnpm turbo run db:push --filter=@repo/db && pnpm turbo run db:generate --filter=@repo/db &&
+             pnpm dev --filter=api"
     
 networks:
   app_network:

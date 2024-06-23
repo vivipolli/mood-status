@@ -3,6 +3,7 @@
   flex-direction: column;
   max-height: 100vh;
   overflow: hidden;
+  padding: 0.5rem;
   background-color: var(--Lavender-100);
   position: relative;
   z-index: 10;
@@ -92,7 +93,10 @@
   gap: 1rem;
 }
 
-.mood_preview:hover,
+.mood_preview:hover {
+  background-color: var(--Lavender-200);
+}
+
 .mood_preview:focus {
   border-color: var(--Lavender-300);
 }
@@ -147,9 +151,10 @@
   border: solid 2px transparent;
 }
 
-.sidebar__add_button:hover,
+.sidebar__add_button:hover {
+  background-color: var(--Lavender-200);
+}
+
 .sidebar__add_button:focus {
-  background-color: var(--Lavender-100);
-  border-color: var(--Lavender-300);
-  color: var(--Lavender-300);
+  background-color: var(--Lavender-200);
 }
