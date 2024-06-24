@@ -5,10 +5,11 @@
 - [Docker](https://docs.docker.com/get-docker/)
 - [Node.js (version 18)](https://nodejs.org/en/download/)
 - [pnpm](https://pnpm.io/installation)
+- [PostgresSQL](https://www.postgresql.org/)
 
 ## Project Structure
 ```bash
-/metalab-mood-test
+/metalab
   /apps
     /api
       Dockerfile
@@ -26,47 +27,53 @@
   pnpm-workspace.yaml
 ```
 
-## Setup and Installation
-1. Clone the repository:
+## Running the Project
+### Using Docker Compose
+1. Make sure you don't have another postgres service running stoping the service:
 ```sh
-git clone https://github.com/yourusername/metalab.git
-cd metalab
+sudo service postgresql stop
+```
+2. Build and run the Docker containers:
+```sh
+docker compose up --build
 ```
 
-2. Install dependencies:
+Obs:
+This command will build and start the following services:
+
+- `@repo/db:`: PostgreSQL database service
+- `api`: NestJS backend service
+- `web`: Next.js frontend service
+
+### Local Setup and Installation (Turbo)
+1. Install dependencies (root):
 ```sh
 pnpm install
 ```
 
-3.Generate Prisma client:
+2. Inside packages/database/.env, change the DATABASE_URL to use locally:
 ```sh
-cd packages/database
-npx prisma generate
+DATABASE_URL="postgresql://admin:mypassword@localhost:5432/mood?schema=public"
 ```
 
-### Running the Project
-#### Using Docker Compose
-1. Build and run the Docker containers:
-```sh
-docker compose up --build
+3. Create database and user:
 ```
-This command will build and start the following services:
-
-- `postgres`: PostgreSQL database service
-- `api`: NestJS backend service
-- `web`: Next.js frontend service
-
-#### Running using Turbo
-- Start the development server:
-```sh
-turbo run dev
-```
-- Build the project:
-```sh
-turbo run build
+sudo -u postgres psql
 ```
 
-#### Accessing the Services
+```sql
+CREATE DATABASE mood;
+CREATE USER admin WITH PASSWORD 'mypassword';
+GRANT ALL PRIVILEGES ON DATABASE mood TO admin;
+```
+
+4. Generate Prisma client and start the development server:
+```sh
+turbo run db:push --filter=@repo/db && turbo run db:generate --filter=@repo/db &&
+turbo dev"
+```
+
+### Accessing the Services
 - **Frontend (Next.js)**: http://localhost:3000
 - **Backend (NestJS)**: http://localhost:3333
 

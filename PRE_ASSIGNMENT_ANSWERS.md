@@ -7,5 +7,5 @@ I did not understand this question.
   - Authentication features
   - A description box for the user to say how they feel in more detail.
   - If the user responds that they are sad, add sources about tips and studies on what they can do to feel better.
-- **Are there any clarifying questions you would ask? If you're able to make assumptions about these and continue, please record and share your assumptions.**
-Yes, about the home page, when the user has nothing registered, in this case I assumed that he had at least one mood registered to load the page for the first time.
+- **Are there any clarifying questions you would ask? If you're able to make assumptions about these and continue, please record and share your assumptions.**  
+I would ask if the user should be required to register their first mood before accessing other components of the app. Based on my assumption, I designed the home page to prompt users to register their first mood upon their initial entry into the app, ensuring they engage with this feature before exploring other components.
