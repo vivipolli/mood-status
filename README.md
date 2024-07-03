@@ -1,4 +1,4 @@
-# Metalab Fullstack Engineer Take-Home Assignment
+# Mood Status
 
 ## Prerequisites
 
