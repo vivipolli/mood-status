@@ -1,11 +1,13 @@
 # Mood Status
+   This project is designed for daily mood tracking, allowing you to record your feelings each day and view your emotional 
+history over time. It is built using Next.js for the frontend, NestJS for the backend, and Prisma ORM with a PostgreSQL database for data management.
 
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Node.js (version 18)](https://nodejs.org/en/download/)
 - [pnpm](https://pnpm.io/installation)
-- [PostgresSQL](https://www.postgresql.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ## Project Structure
 ```bash
