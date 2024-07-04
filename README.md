@@ -2,6 +2,9 @@
    This project is designed for daily mood tracking, allowing you to record your feelings each day and view your emotional 
 history over time. It is built using Next.js for the frontend, NestJS for the backend, and Prisma ORM with a PostgreSQL database for data management.
 
+![image](https://github.com/vivipolli/mood-status/assets/37938270/ca0ff203-d410-4b56-b311-e51208cdc0be)
+
+
 ## Prerequisites
 
 - [Docker](https://docs.docker.com/get-docker/)
